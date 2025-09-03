@@ -82,8 +82,8 @@
                 <label for="watermark-text" class="px-2 text-sm">水印:</label>
                 <input type="text" id="watermark-text" class="px-2 py-1 text-sm border-none bg-transparent focus:outline-none w-32" placeholder="输入水印文字">
                 <label for="watermark-opacity" class="px-2 text-sm">透明度:</label>
-                <input type="range" id="watermark-opacity" min="0" max="100" value="30" class="w-24 accent-primary">
-                <span id="opacity-value" class="px-2 text-sm w-10 text-center">30%</span>
+                <input type="range" id="watermark-opacity" min="0" max="100" value="6" class="w-24 accent-primary">
+                <span id="opacity-value" class="px-2 text-sm w-10 text-center">6%</span>
             </div>
             
             <button id="export-btn" class="bg-primary hover:bg-primary/90 text-white px-4 py-2 rounded-md transition-colors flex items-center">
@@ -103,7 +103,7 @@
                     <i class="fa fa-cog text-primary mr-2"></i>操作
                 </h2>
                 <div class="text-sm text-gray-500 dark:text-gray-400 mb-2">
-                    提示: **按回车键**进入编辑，鼠标点击箭头可添加子节点
+                    提示: 拖动节点可调整位置，按*Tab键*编辑文本，*空格键*折叠展开
                 </div>
             </div>
 
@@ -160,9 +160,7 @@
                             style="top: 1000px; left: 1000px; transform: translate(-50%, -50%); min-width: 120px"
                             data-id="root">
                         <div class="node-content text-center" contenteditable="false">中心主题</div>
-                        <div class="collapse-toggle absolute -right-2 -top-2 w-5 h-5 rounded-full bg-white dark:bg-gray-700 text-primary flex items-center justify-center cursor-pointer text-xs">
-                            <i class="fa fa-minus"></i>
-                        </div>
+                        
                     </div>
                 </div>
             </div>
@@ -176,11 +174,11 @@
             </div>
             <div>
                 <i class="fa fa-info-circle mr-1"></i>
-                <span>提示: 拖动节点可调整位置，**按回车键**编辑文本，鼠标点击箭头可添加子节点</span>
+                <span>提示: 拖动节点可调整位置，按*Tab键*编辑文本，*空格键*折叠展开</span>
             </div>
         </div>
     </footer>
-    <script src="sp.js"></script>
+<script src="sp.js"></script>
 
 </body>
 </html>
