@@ -30,7 +30,7 @@
             editingNodeId: null, // 新增：跟踪当前正在编辑的节点ID
             exportSettings: {
                 watermarkText: '',
-                watermarkOpacity: 30
+                watermarkOpacity: 6
             }
         };
 
@@ -128,14 +128,7 @@
                 
                 const hasChildren = Object.values(node.children).some(direction => direction.length > 0);
                 if (hasChildren) {
-                    const toggleBtn = document.createElement('div');
-                    toggleBtn.className = 'collapse-toggle absolute -right-2 -top-2 w-5 h-5 rounded-full bg-white dark:bg-gray-700 text-primary flex items-center justify-center cursor-pointer text-xs shadow-sm';
-                    toggleBtn.innerHTML = node.collapsed ? '<i class="fa fa-plus"></i>' : '<i class="fa fa-minus"></i>';
-                    toggleBtn.addEventListener('click', (e) => {
-                        e.stopPropagation();
-                        toggleNodeCollapse(nodeId);
-                    });
-                    nodeElement.appendChild(toggleBtn);
+                    
                 }
                 
                 elements.nodesContainer.appendChild(nodeElement);
@@ -707,7 +700,7 @@
                 
                 // 修复：当按下回车键时，保存文本
                 contentDiv.addEventListener('keydown', (e) => {
-                    if (e.key === 'Enter') {
+                    if (e.key === 'Tab') {
                         e.preventDefault();
                         e.target.blur();
                     }
@@ -833,12 +826,15 @@
 
             // 新增：全局回车键事件
             document.addEventListener('keydown', (e) => {
-                if (e.key === 'Enter') {
+                if (e.key === 'Tab') {
                     // 当有节点被选中且没有正在编辑时
                     if (state.activeNodeId && !state.editingNodeId) {
                         e.preventDefault();
                         startNodeEditing(state.activeNodeId);
                     }
+                } else if (e.key === ' ' && state.activeNodeId) {
+                    e.preventDefault();
+                    toggleNodeCollapse(state.activeNodeId);
                 }
             });
             
